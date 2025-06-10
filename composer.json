@@ -1,0 +1,42 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "octopyid/filament-palette",
+    "description": "Easily switch and customize the UI color palette for your FilamentPHP",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Supian M",
+            "email": "supianidz@octopy.dev"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Octopy\\Filament\\Palette\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Octopy\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/testbench package:test"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Octopy\\Filament\\Palette\\Providers\\PaletteServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
