@@ -28,7 +28,7 @@ class PaletteServiceProvider extends ServiceProvider
             $this
                 ->publishes([
                     __DIR__ . '/../../config/filament-palette.php' => config_path('filament-palette.php'),
-                ]);
+                ], 'filament-palette');
         }
     }
 }
