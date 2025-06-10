@@ -10,7 +10,7 @@ use Livewire\Component;
 use Octopy\Filament\Palette\PaletteManager;
 use Throwable;
 
-class Palette extends Component
+class PaletteSwitcher extends Component
 {
     /**
      * @var array
@@ -44,7 +44,7 @@ class Palette extends Component
      */
     public function render() : View
     {
-        return view('octopy.palette::palette');
+        return view('octopy.palette::switcher', []);
     }
 
     /**
@@ -85,8 +85,8 @@ class Palette extends Component
     {
         return collect($this->themes)->map(function (array $palette) {
             return [
-                'border'     => $this->toHEX($palette['primary'][700]),
-                'background' => $this->toHEX($palette['primary'][400]),
+                'border'     => $this->rgbToHex($palette['primary'][700]),
+                'background' => $this->rgbToHex($palette['primary'][400]),
             ];
         });
     }
@@ -95,7 +95,7 @@ class Palette extends Component
      * @param  string $rgb
      * @return string
      */
-    private function toHEX(string $rgb) : string
+    private function rgbToHex(string $rgb) : string
     {
         [$r, $g, $b] = array_map('trim', explode(',', $rgb));
 
@@ -113,6 +113,6 @@ class Palette extends Component
      */
     private function manager() : PaletteManager
     {
-        return App::make(PaletteManager::class);
+        return App::make('octopy::palette');
     }
 }

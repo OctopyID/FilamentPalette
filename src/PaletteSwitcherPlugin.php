@@ -9,7 +9,7 @@ use Filament\View\PanelsRenderHook as Hook;
 use Illuminate\Support\Facades\Blade;
 use Octopy\Filament\Palette\Http\Middleware\ApplyPalette;
 
-class PalettePlugin implements Plugin
+class PaletteSwitcherPlugin implements Plugin
 {
     /**
      * @return string
@@ -44,8 +44,8 @@ class PalettePlugin implements Plugin
     {
         $panel
             ->renderHook(Hook::USER_MENU_PROFILE_AFTER, function () {
-                if (! app(PaletteManager::class)->isHidden()) {
-                    return Blade::render('@livewire(\Octopy\Filament\Palette\Livewire\Palette::class)');
+                if (! app('octopy::palette')->isHidden()) {
+                    return Blade::render('<livewire:palette-switcher />');
                 }
 
                 return null;
@@ -57,19 +57,19 @@ class PalettePlugin implements Plugin
 
     /**
      * @param  Closure|bool $hidden
-     * @return PalettePlugin
+     * @return PaletteSwitcherPlugin
      */
-    public function hidden(Closure|bool $hidden = true) : PalettePlugin
+    public function hidden(Closure|bool $hidden = true) : PaletteSwitcherPlugin
     {
-        return tap($this, fn() => app(PaletteManager::class)->hidden($hidden));
+        return tap($this, fn() => app('octopy::palette')->hidden($hidden));
     }
 
     /**
      * @param  Closure|bool $globally
-     * @return PalettePlugin
+     * @return PaletteSwitcherPlugin
      */
-    public function applyThemeGlobally(Closure|bool $globally = true) : PalettePlugin
+    public function applyThemeGlobally(Closure|bool $globally = true) : PaletteSwitcherPlugin
     {
-        return tap($this, fn() => app(PaletteManager::class)->applyThemeGlobally($globally));
+        return tap($this, fn() => app('octopy::palette')->applyThemeGlobally($globally));
     }
 }
