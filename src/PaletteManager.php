@@ -18,6 +18,11 @@ class PaletteManager
     /**
      * @var Closure|bool
      */
+    protected Closure|bool $hidden = false;
+
+    /**
+     * @var Closure|bool
+     */
     protected Closure|bool $globally = false;
 
     /**
@@ -55,6 +60,25 @@ class PaletteManager
             config('filament-palette.palette.' . $this->get(), [
                 //
             ]);
+    }
+
+    /**
+     * @param  Closure|bool $hidden
+     * @return $this
+     */
+    public function hidden(Closure|bool $hidden = true) : PaletteManager
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHidden() : bool
+    {
+        return $this->evaluate($this->hidden);
     }
 
     /**

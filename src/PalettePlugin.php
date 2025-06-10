@@ -44,11 +44,24 @@ class PalettePlugin implements Plugin
     {
         $panel
             ->renderHook(Hook::USER_MENU_PROFILE_AFTER, function () {
-                return Blade::render('@livewire(\Octopy\Filament\Palette\Livewire\Palette::class)');
+                if (! app(PaletteManager::class)->isHidden()) {
+                    return Blade::render('@livewire(\Octopy\Filament\Palette\Livewire\Palette::class)');
+                }
+
+                return null;
             })
             ->authMiddleware([
                 ApplyPalette::class,
             ]);
+    }
+
+    /**
+     * @param  Closure|bool $hidden
+     * @return PalettePlugin
+     */
+    public function hidden(Closure|bool $hidden = true) : PalettePlugin
+    {
+        return tap($this, fn() => app(PaletteManager::class)->hidden($hidden));
     }
 
     /**

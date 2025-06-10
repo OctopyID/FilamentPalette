@@ -11,9 +11,9 @@ use Throwable;
 class ApplyPalette
 {
     /**
-     * @param  PaletteManager $Palette
+     * @param  PaletteManager $manager
      */
-    public function __construct(protected PaletteManager $Palette)
+    public function __construct(protected PaletteManager $manager)
     {
         //
     }
@@ -23,10 +23,12 @@ class ApplyPalette
      */
     public function handle(Request $request, Closure $next)
     {
-        $colors = $this->Palette->getColors();
+        if (! $this->manager->isHidden()) {
+            $colors = $this->manager->getColors();
 
-        if (filled($colors)) {
-            FilamentColor::register($colors);
+            if (filled($colors)) {
+                FilamentColor::register($colors);
+            }
         }
 
         return $next($request);
