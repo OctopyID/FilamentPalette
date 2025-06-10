@@ -1,4 +1,4 @@
-<div class="fi-theme-switcher grid grid-cols-10 px-3 py-2 items-center">
+<div class="fi-theme-switcher grid grid-cols-9 gap-1 px-3 py-2 items-center">
     @foreach($this->getThemes() as $name => $theme)
         <div
             title="{{ str($name)->upper() }}"

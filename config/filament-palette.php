@@ -3,7 +3,7 @@
 use Filament\Support\Colors\Color;
 
 return [
-    'default' => 'teal',
+    'default' => env('FILAMENT_PALETTE_DEFAULT', 'slate'),
 
     'palette' => [
         'slate'   => [
@@ -34,8 +34,8 @@ return [
             'success' => Color::Lime,
             'info'    => Color::Blue,
         ],
-        'lime'    => [
-            'primary' => Color::Lime,
+        'emerald' => [
+            'primary' => Color::Emerald,
             'warning' => Color::Yellow,
             'danger'  => Color::Red,
             'success' => Color::Emerald,
@@ -68,13 +68,6 @@ return [
             'danger'  => Color::Red,
             'success' => Color::Lime,
             'info'    => Color::Sky,
-        ],
-        'rose'    => [
-            'primary' => Color::Rose,
-            'warning' => Color::Amber,
-            'danger'  => Color::Red,
-            'success' => Color::Lime,
-            'info'    => Color::Blue,
         ],
     ],
 ];
