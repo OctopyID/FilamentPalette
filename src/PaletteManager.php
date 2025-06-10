@@ -13,7 +13,7 @@ class PaletteManager
     /**
      * @var string
      */
-    private const CACHE_KEY_PREFIX = 'Palette';
+    private const CACHE_KEY_PREFIX = 'octopy.filament.palette';
 
     /**
      * @var Closure|bool
