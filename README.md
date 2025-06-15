@@ -1,3 +1,14 @@
+<p align="center">
+    <img src="art.png" alt="Filament Palette">
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/packagist/v/octopyid/filament-palette.svg?style=for-the-badge" alt="Version">
+    <img src="https://img.shields.io/packagist/dt/octopyid/filament-palette.svg?style=for-the-badge&color=F28D1A" alt="Downloads">
+    <img src="https://img.shields.io/packagist/l/octopyid/filament-palette.svg?style=for-the-badge" alt="License">
+</p>
+
+
 # Filament Palette Switcher
 
 A **FilamentPHP plugin** that allows users to easily switch and customize the UI color palette in their Filament admin panels. This plugin provides a seamless way to change themes,

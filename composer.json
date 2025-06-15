@@ -3,7 +3,7 @@
     "name": "octopyid/filament-palette",
     "description": "Easily switch and customize the UI color palette for your FilamentPHP",
     "type": "library",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Supian M",
