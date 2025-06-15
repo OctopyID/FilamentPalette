@@ -14,7 +14,7 @@ class PaletteServiceProvider extends ServiceProvider
      */
     public function register() : void
     {
-        $this->app->singleton('octopy::palette', function () {
+        $this->app->singleton('filament.palette', function () {
             return new PaletteManager;
         });
 

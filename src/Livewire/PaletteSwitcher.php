@@ -97,9 +97,13 @@ class PaletteSwitcher extends Component
      */
     private function rgbToHex(string $rgb) : string
     {
+        if ($rgb[0] === '#') {
+            return $rgb;
+        }
+
         [$r, $g, $b] = array_map('trim', explode(',', $rgb));
 
-        // Ensure each component is converted to a 2-digit hex string,
+        // ensure each component is converted to a 2-digit hex string,
         // padding with a leading zero if the hex value is only one digit.
         $hexR = sprintf('%02x', $r);
         $hexG = sprintf('%02x', $g);
@@ -113,6 +117,6 @@ class PaletteSwitcher extends Component
      */
     private function manager() : PaletteManager
     {
-        return App::make('octopy::palette');
+        return App::make('filament.palette');
     }
 }

@@ -44,7 +44,7 @@ class PaletteSwitcherPlugin implements Plugin
     {
         $panel
             ->renderHook(Hook::USER_MENU_PROFILE_AFTER, function () {
-                if (! app('octopy::palette')->isHidden()) {
+                if (! app('filament.palette')->isHidden()) {
                     return Blade::render('<livewire:palette-switcher />');
                 }
 
@@ -61,7 +61,7 @@ class PaletteSwitcherPlugin implements Plugin
      */
     public function hidden(Closure|bool $hidden = true) : PaletteSwitcherPlugin
     {
-        return tap($this, fn() => app('octopy::palette')->hidden($hidden));
+        return tap($this, fn() => app('filament.palette')->hidden($hidden));
     }
 
     /**
@@ -70,6 +70,6 @@ class PaletteSwitcherPlugin implements Plugin
      */
     public function applyThemeGlobally(Closure|bool $globally = true) : PaletteSwitcherPlugin
     {
-        return tap($this, fn() => app('octopy::palette')->applyThemeGlobally($globally));
+        return tap($this, fn() => app('filament.palette')->applyThemeGlobally($globally));
     }
 }
