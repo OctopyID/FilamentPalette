@@ -36,10 +36,22 @@ Install the package via Composer:
 composer require octopyid/filament-palette
 ```
 
+Filament v3 (Tailwind v3) — add plugin views to tailwind.config.js:
+```js
+content: [
+    './vendor/octopyid/filament-palette/resources/**/*.blade.php',
+]
+```
+Filament v4 (Tailwind v4) — declare sources in your panel theme CSS (paths are relative to this CSS file):
+
+```css
+@source '../../../../vendor/octopyid/filament-palette/resources';
+```
+
 Optionally, publish the configuration file:
 
 ```bash
-artisan vendor:publish --tag=filament-palette
+php artisan vendor:publish --tag=filament-palette
 ```
 
 ---
@@ -57,14 +69,6 @@ public function panel(Panel $panel): Panel
         \Octopy\Filament\Palette\PaletteSwitcherPlugin::make()
     );
 }
-```
-
-Add the plugin's views to your tailwind.config.js
-
-```js
-content: [
-    './vendor/octopyid/filament-palette/resources/**/*.blade.php',
-]
 ```
 
 By default, the color palette is applied individually to each user, allowing them to freely choose their preferred colors.
