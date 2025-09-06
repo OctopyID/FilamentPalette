@@ -85,31 +85,10 @@ class PaletteSwitcher extends Component
     {
         return collect($this->themes)->map(function (array $palette) {
             return [
-                'border'     => $this->rgbToHex($palette['primary'][700]),
-                'background' => $this->rgbToHex($palette['primary'][400]),
+                'border'     => $palette['primary'][700],
+                'background' => $palette['primary'][400],
             ];
         });
-    }
-
-    /**
-     * @param  string $rgb
-     * @return string
-     */
-    private function rgbToHex(string $rgb) : string
-    {
-        if ($rgb[0] === '#') {
-            return $rgb;
-        }
-
-        [$r, $g, $b] = array_map('trim', explode(',', $rgb));
-
-        // ensure each component is converted to a 2-digit hex string,
-        // padding with a leading zero if the hex value is only one digit.
-        $hexR = sprintf('%02x', $r);
-        $hexG = sprintf('%02x', $g);
-        $hexB = sprintf('%02x', $b);
-
-        return '#' . $hexR . $hexG . $hexB;
     }
 
     /**
